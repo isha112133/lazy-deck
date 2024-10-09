@@ -1,14 +1,14 @@
 import React from "react";
 import { View, TouchableOpacity, StyleSheet } from "react-native";
-import { Text } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function Header() {
   return (
     <View style={styles.container}>
       {/* <Text style={styles.title}>Never Have I Ever</Text> */}
       <TouchableOpacity style={styles.settingsButton}>
-        {/* <Text style={styles.settingsText}>⚙️</Text>{" "} */}
-        {/* Wrap emoji inside <Text> */}
+        <Icon name="setting" size={24} color="#fff" />
+        {/* Settings icon */}
       </TouchableOpacity>
     </View>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "#4CAF50", // Green background color
+    backgroundColor: "black", // Green background color
   },
   title: {
     fontSize: 24,
@@ -29,8 +29,7 @@ const styles = StyleSheet.create({
   settingsButton: {
     padding: 10,
   },
-  settingsText: {
-    fontSize: 20,
-    color: "#fff",
+  settingsButton: {
+    padding: 10,
   },
 });
