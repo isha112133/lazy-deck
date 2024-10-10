@@ -4,25 +4,46 @@ import {
   ScrollView,
   StyleSheet,
   ImageBackground,
+  View,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
-import ButtonRow from "./components/ButtonRow";
+import SettingsScreen from "./screens/SettingsScreen"; // New screen
+import tw from "twrnc";
 
-// Import the background image from assets
 const backgroundImage = require("./assets/bg.webp");
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
-      <SafeAreaView style={styles.container}>
-        {/* Header */}
-        <Header />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-        {/* Main Content with buttons */}
+function HomeScreen({ navigation }) {
+  return (
+    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+      <View style={tw`flex items-end my-4 mt-10 right-8`}>
+        <Header navigation={navigation} />
+      </View>
+      <SafeAreaView style={styles.container}>
         <ScrollView contentContainerStyle={styles.content}>
           <MainContent />
-          <ButtonRow />
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>
@@ -34,8 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backgroundImage: {
-    flex: 1, // Make the background image cover the entire screen
-    resizeMode: "cover", // Adjust the image to cover the screen
+    flex: 1,
+    resizeMode: "cover",
   },
   content: {
     alignItems: "center",
