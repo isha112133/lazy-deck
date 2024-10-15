@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 import SettingsScreen from "./screens/SettingsScreen"; // New screen
 import tw from "twrnc";
+import PurchasesScreen from "./screens/PurchasesScreen";
 
 const backgroundImage = require("./assets/bg.webp");
 const Stack = createStackNavigator();
@@ -28,6 +29,11 @@ export default function App() {
         <Stack.Screen
           name="Settings"
           component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Purchases"
+          component={PurchasesScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -12,6 +13,8 @@ import tw from "twrnc";
 const backgroundImage = require("../assets/bg.webp");
 
 export default function SettingsScreen() {
+  const navigation = useNavigation();
+
   return (
     <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
       <View style={tw`flex-col gap-4`}>
@@ -90,33 +93,35 @@ export default function SettingsScreen() {
             <Text style={tw`text-2xl font-semibold text-[#001f3f]`}>
               Purchases
             </Text>
-            <Image
-              source={require("../assets/arrow.png")}
-              style={
-                (tw`w-7 h-7 text-white`,
-                { height: 24, width: 24, transform: [{ rotate: "270deg" }] })
-              }
-            />
+            <TouchableOpacity onPress={() => navigation.navigate("Purchases")}>
+              <Image
+                source={require("../assets/arrow.png")}
+                style={
+                  (tw`w-7 h-7 text-white`,
+                  { height: 24, width: 24, transform: [{ rotate: "270deg" }] })
+                }
+              />
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={tw`flex-row gap-8 top-40`}>
+        <View style={tw`flex-row gap-8 top-40 mx-6`}>
           <TouchableOpacity
-            style={tw`flex-row items-center gap-2 rounded-md bg-[#001f3f] border-white justify-center`}
+            style={tw`flex-row items-center px-2 py-1 gap-2 rounded-md bg-[#001f3f] border-white justify-center`}
           >
             <Image
-              source={require("../assets/retro.png")}
-              style={tw`w-9 h-9 text-white`}
+              source={require("../assets/videoLight.png")}
+              style={tw`w-5 h-5 text-white`}
             />
             <Text style={tw`font-light text-lg px-1 text-white`}>
               More Games
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={tw`flex-row items-center gap-2 rounded-md bg-[#001f3f] border-white justify-center`}
+            style={tw`flex-row items-center px-2 py-1 gap-2 rounded-md bg-[#001f3f] border-white justify-center`}
           >
             <Image
               source={require("../assets/rocket.png")}
-              style={tw`w-8 h-8 text-white`}
+              style={tw`w-5 h-5 text-white`}
             />
             <Text style={tw`font-light text-lg px-1 text-white`}>
               Follow Us
